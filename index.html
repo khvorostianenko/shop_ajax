@@ -53,8 +53,10 @@
                             else alert( "Ошибка AJAX: " + this.statusText);
                         }
                     };
+                    $('footer').css('display', 'none');
                     $('main').css('display', 'none');
                     request.send(url);
+                    $('footer').css('display', 'block');
                 }
             });
        /*AJAX-функция (кросс-браузерная)*/
