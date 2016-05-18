@@ -34,16 +34,20 @@
                 {
                     url='url='+id+'.html';
                     request = new AjaxRequest();
+                    /*Настраиваем объект request на создание  POST запроса*/
                     request.open("POST", "php/poster.php", true);
+                    /*Настройка заголовков POST запроса*/
                     request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
                     request.setRequestHeader("Content-length", url.length);
                     request.setRequestHeader("Connection", "close");
+                    /*Вызывается при каждом изменении имежщегося в объекта свойства readyState*/
                     request.onreadystatechange = function()
                     {
                         if (this.readyState == 4)
                         {
                             if (this.status == 200)
                             {
+                                /*Проверяем responseText -- текст ответа*/
                                 if (this.responseText != null)
                                 {
                                     document.getElementById('for-new-dom').innerHTML = this.responseText;
@@ -53,6 +57,7 @@
                             else alert( "Ошибка AJAX: " + this.statusText);
                         }
                     };
+
                     $('footer').css('display', 'none');
                     $('main').css('display', 'none');
                     request.send(url);
