@@ -1,33 +1,9 @@
-/*input {
-    border: 1px green dotted;
-}
-input[type=radio][checked] {
-    border: 1px yellow double;
-
-}
-.a_google:hover {
-    color: yellow !important;
-}
-form {
-    border: 1px red solid;
-    float :left;
-    width: 50%;
-    color:black;
-
-}
-
-#new_window {
-    border: 1px darkgray solid;
-    float :left;
-    width : 50%;
-}*/
 main{
     display: block;
 }
 
 a{
     display: inline-block;
-
 }
 
 #for-frame{
@@ -38,7 +14,7 @@ a{
     overflow: hidden;
 }
 
-iframe{
+/*iframe{
     position: absolute;
     top: -100px;
     display: none;
@@ -46,7 +22,7 @@ iframe{
     width: 100%;
     height: 600px;
     overflow: hidden;
-}
+}*/
 
 main section {
     width: 100%;
@@ -58,6 +34,7 @@ main section div {
     PADDING: 2%;
     MARGIN: AUTO;
 }
+
 main section div img {
     DISPLAY: BLOCK;
     width: 80%;
@@ -74,14 +51,11 @@ nav ul li {
     display: inline;
     text-align: left;
     font-size: 18;
-
 }
 
 nav ul li:hover{
     background: yellow;
 }
-
-
 
 footer ul li {
     text-align: center;
@@ -91,8 +65,9 @@ footer ul li {
 }
 
 div:hover img {
-border: rgba(66, 184, 182, 0.73) double 1px;
+    border: rgba(66, 184, 182, 0.73) double 1px;
 }
+
 nav + p, div#for-new-dom>p{
     display: block;
     width: 80%;
@@ -101,7 +76,7 @@ nav + p, div#for-new-dom>p{
     text-align: justify;
 }
 
-div.menu{
+a.menu{
     display: inline-block;
     height: 40px;
     margin: 10px;
