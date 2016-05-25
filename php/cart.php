@@ -65,17 +65,12 @@
 
 $i = 0;
 
-
 do
 {
     $textAvailable = 'товар ' . ($products[$i]['available'] ? 'готово к отгрузке' : 'ждем поставки');
-
     $action = array_key_exists( 'action', $products[$i] ) ? (100 - $products[$i]['action']) / 100 : 1;
-
     $summaProduct = $products[$i]['cost'] * $products[$i]['count'] * $action;
-
     $textTable .= BEGIN_ROW. ($i + 1);
-
     foreach ($products[$i] as $key => $value)
     {
        switch ($key)
@@ -88,69 +83,42 @@ do
                break;
            default:
                $textTable.= COL_LINE . $value;
-
        }
     }
     $textTable .=   END_ROW;
-
     $summa += $summaProduct;
     $i++;
 }
-while( $i < count($products) );
 
+while( $i < count($products));
 $name = array ();
 $cost = array ();
 $action = array ();
 $j=0;
-for ($i=1; $i<=4;$i++) {
+
+for ($i=0; $i<=3;$i++) {
     if (isset($_REQUEST['check_'.$i]))
     {
         $j++;
-        $name[$j] = $_REQUEST['name_'.$i];
-        $cost[$j] = $_REQUEST['price_'.$i];
-        $action[$j] = $_REQUEST['sale_'.$i];
+        $name[$j] = $_REQUEST["name"][$i];
+        $cost[$j] = $_REQUEST["price"][$i];
+        $action[$j] = $_REQUEST["sale"][$i];
     }
 }
-/*echo 'j='.$j.'<br>';
-var_dump($cost);
-echo '<br>';
-var_dump($name);
-echo '<br>';
-var_dump($action);
-echo '<br>';*/
+
 array_multisort($cost, $name, $action);
-/*var_dump($cost);
-echo '<br>';
-var_dump($name);
-echo '<br>';
-var_dump($action);
-echo '<br>';
-echo 'check1 = '.$_REQUEST['check_1'];
-echo '<br>';
-echo 'check2 = '.$_REQUEST['check_2'];
-echo '<br>';
-echo 'check3 = '.$_REQUEST['check_3'];
-echo '<br>';
-echo 'check4 = '.$_REQUEST['check_4'];
-echo '<br>';*/
 for ($i=0; $i<$j;$i++)
 {
     if (!isset( $_REQUEST['count']))
         $_REQUEST['count'] = 1;
-
     $_REQUEST['summa'] = $cost[$i] * $_REQUEST['count'] * (100 - $action[$i] ) / 100;
-    
     $textTable .= BEGIN_ROW. (count($products) + $i+1) . COL_LINE . $name[$i] . COL_LINE . $cost[$i]
         . COL_LINE . $_REQUEST['count'] . COL_LINE . $_REQUEST['summa'].COL_LINE . ' '.COL_LINE .$action[$i] .END_ROW;
-
     $summa += $_REQUEST['summa'] ;
 }
 
 $textTable .= BEGIN_ROW . ' '. COL_LINE. "Общая сумма заказа " . COL_LINE . ' '. COL_LINE.' '. COL_LINE.$summa . END_ROW;
-
-
 $temp = 'textTable';
-
 echo  $$temp;
 
 ?>

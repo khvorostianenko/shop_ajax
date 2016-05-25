@@ -41,10 +41,10 @@ function AjaxFormRequest(result_id,form_id,url) {
         dataType: "html", //Тип данных
         data: jQuery("#"+form_id).serialize(),
         success: function(response) { //Если все нормально
-            document.getElementById(result_id).innerHTML = response;
+            $('#'+result_id).html(response);
         },
         error: function(response) { //Если ошибка
-            document.getElementById(result_id).innerHTML = "Ошибка при отправке формы";
+            $('#'+result_id).html("Ошибка при отправке формы");
         }
     });
 }

@@ -31,24 +31,20 @@
     </section>
        <div style="clear: both"></div>
        <section>
-           <script>
-               $("form#form_id").removeAttr('action');
-               $("input#button").attr('type','button');
-           </script>
            <form method="post" id="form_id" action="../php/cart.php">
                    <div>
                        <p>Ya sea un cumpleaños, comunión o una simple fiesta infantil, los Angry Birds son un acierto seguro.
                            Aquí tenéis ideas que podéis hacer vosotros mismos en casa sin gastaros apenas dinero:
                        </p>
 
-                         <label for="name_1">Наименование</label>
-                         <input id="name_1" type="text" name="name_1" readonly value="Машинка"/><br>
+                         <label for="name[]">Наименование</label>
+                         <input id="name[]" type="text" name="name[]" readonly value="Машинка"/><br>
                          <label for="price_1">Цена</label>
-                         <input id="price_1" type="text" name="price_1" readonly value="2200"/><br>
+                         <input id="price_1" type="text" name="price[]" readonly value="2200"/><br>
                          <label for="sale_1">Скидка</label>
-                         <input id="sale_1" type="text" name="sale_1" readonly value="10"/><br>
+                         <input id="sale_1" type="text" name="sale[]" readonly value="10"/><br>
                          <label for="check_1">Берем?</label>
-                         <input id="check_1" type="checkbox" name="check_1"/><br>
+                         <input id="check_1" type="checkbox" name="check_0"/><br>
 
 
                     </div>
@@ -56,13 +52,13 @@
                        <p> Я пианист. На концерте на мои руки смотрит весь зал. С тех пор как купил часы, в зале аншлаг. Заду
                            мываюсь о покупке экземпляра и на вторую руку. Концерт завершается в 20:00</p>
                            <label>Наименование</label>
-                           <input type="text" name="name_2" readonly value="Часы"/><br>
+                           <input type="text" name="name[]" readonly value="Часы"/><br>
                            <label>Цена</label>
-                           <input type="text" name="price_2" readonly value="3000"/><br>
+                           <input type="text" name="price[]" readonly value="3000"/><br>
                            <label>Скидка</label>
-                           <input type="text" name="sale_2" readonly value="5"/><br>
+                           <input type="text" name="sale[]" readonly value="5"/><br>
                            <label>Берем?</label>
-                           <input type="checkbox" name="check_2"/><br>
+                           <input type="checkbox" name="check_1"/><br>
                    </div>
                    <div>
                        <p>
@@ -72,13 +68,13 @@
                            понять что-либо просто невозможно.
                        </p>
                        <label>Наименование</label>
-                       <input type="text" name="name_3" readonly value="Телефон"/><br>
+                       <input type="text" name="name[]" readonly value="Телефон"/><br>
                        <label>Цена</label>
-                       <input type="text" name="price_3" readonly value="5000"/><br>
+                       <input type="text" name="price[]" readonly value="5000"/><br>
                        <label>Скидка</label>
-                       <input type="text" name="sale_3" readonly value="9"/><br>
+                       <input type="text" name="sale[]" readonly value="9"/><br>
                        <label>Берем?</label>
-                       <input type="checkbox" name="check_3"/><br>
+                       <input type="checkbox" name="check_2"/><br>
                    </div>
                    <div>
                        <p>Dell U2414H - это долгожданное обновление линейки UltraSharp от Dell.
@@ -86,19 +82,23 @@
                            мире рамке (6,05 мм).
                        </p>
                            <label>Наименование</label>
-                           <input type="text" name="name_4" readonly value="Монитор"/><br>
+                           <input type="text" name="name[]" readonly value="Монитор"/><br>
                            <label>Цена</label>
-                           <input type="text" name="price_4" readonly value="1000"/><br>
+                           <input type="text" name="price[]" readonly value="1000"/><br>
                            <label>Скидка</label>
-                           <input type="text" name="sale_4" readonly value="0"/><br>
+                           <input type="text" name="sale[]" readonly value="0"/><br>
                            <label>Берем?</label>
-                           <input type="checkbox" name="check_4"/><br>
+                           <input type="checkbox" name="check_3"/><br>
 
                    </div>
                <input id="button" type="submit" value="ДОБАВИТЬ ВЫБРАННЫЕ ПРОДУКТЫ В КОРЗИНУ" onclick="AjaxFormRequest('result_for_cart', 'form_id', ' php/cart.php')" />
            </form>
        </section>
     <div id="result_for_cart"></div>
+    <script>
+        $("form#form_id").removeAttr('action');
+        $("input#button").attr('type','button');
+    </script>
    </p>
 </main>
 
