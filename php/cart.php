@@ -22,6 +22,44 @@
  * Date: 18.05.16
  * Time: 19:19
  */
+
+function formProcessing($massive, $i, $j, &$name, &$cost, &$action)
+{
+    if (isset($massive['check_' . $i])) {
+        $j++;
+        $name[$j] = $massive["name"][$i];
+        $cost[$j] = $massive["price"][$i];
+        $action[$j] = $massive["sale"][$i];
+    }
+    if ($i == 0){
+        return $j;
+    }
+    else {
+        return formProcessing($massive, ($i-1), $j, $name, $cost, $action);
+    }
+}
+
+function tableFormation($massive, $name, $cost, $action, $products, $summa, $j, $i)
+{
+    if (!isset($action[0])){
+        return BEGIN_ROW . ' '. COL_LINE. "Общая сумма заказа " . COL_LINE . ' '.
+        COL_LINE.' '. COL_LINE.$summa . END_ROW;
+    }
+    if (!isset( $massive['count'])){
+        $massive['count'] = 1;}
+    $subtotal = $cost[$i] * $massive['count'] * (100 - $action[$i] ) / 100;
+    $textTableLocal = BEGIN_ROW. (count($products) + $i+1) . COL_LINE . $name[$i] . COL_LINE . $cost[$i]
+        .COL_LINE . $massive['count'] . COL_LINE . $subtotal.COL_LINE . ' '.COL_LINE .$action[$i] .END_ROW;
+    $summa += $subtotal;
+    if ($i==$j){
+        return $textTableLocal.= BEGIN_ROW . ' '. COL_LINE. "Общая сумма заказа " . COL_LINE . ' '.
+            COL_LINE.' '. COL_LINE.$summa . END_ROW;
+    }
+    else {
+        return $textTableLocal.tableFormation($_REQUEST, $name, $cost, $action, $products, $summa, $j, ++$i);
+    }
+}
+
     $summa = 0;
     $textTable = '';
 
@@ -95,52 +133,9 @@ $name = array ();
 $cost = array ();
 $action = array ();
 $j=0;
-function formProcessing($massive, $i, $j, &$name, &$cost, &$action)
-{
-    if ($i == 0){
-
-        if (isset($massive['check_' . $i])) {
-            $j++;
-            $name[$j] = $massive["name"][$i];
-            $cost[$j] = $massive["price"][$i];
-            $action[$j] = $massive["sale"][$i];
-        }
-        return $j;
-    }
-    else {
-        if (isset($massive['check_' . $i])) {
-            $j++;
-            $name[$j] = $massive["name"][$i];
-            $cost[$j] = $massive["price"][$i];
-            $action[$j] = $massive["sale"][$i];
-        }
-        return formProcessing($massive, ($i-1), $j, $name, $cost, $action);
-    }
-}
 
 $j = formProcessing($_REQUEST, count($_REQUEST) - 1, 0, $name, $cost, $action);
 array_multisort($cost, $name, $action);
-
-function tableFormation($massive, $name, $cost, $action, $products, $summa, $j, $i)
-{
-    if (!isset($action[0])){
-        return BEGIN_ROW . ' '. COL_LINE. "Общая сумма заказа " . COL_LINE . ' '.
-            COL_LINE.' '. COL_LINE.$summa . END_ROW;
-    }
-    if (!isset( $massive['count'])){
-        $massive['count'] = 1;}
-    $subtotal = $cost[$i] * $massive['count'] * (100 - $action[$i] ) / 100;
-    $textTableLocal = BEGIN_ROW. (count($products) + $i+1) . COL_LINE . $name[$i] . COL_LINE . $cost[$i]
-        .COL_LINE . $massive['count'] . COL_LINE . $subtotal.COL_LINE . ' '.COL_LINE .$action[$i] .END_ROW;
-    $summa += $subtotal;
-    if ($i==$j){
-        return $textTableLocal.= BEGIN_ROW . ' '. COL_LINE. "Общая сумма заказа " . COL_LINE . ' '.
-            COL_LINE.' '. COL_LINE.$summa . END_ROW;
-    }
-    else {
-        return $textTableLocal.tableFormation($_REQUEST, $name, $cost, $action, $products, $summa, $j, ++$i);
-    }
-}
 $textTable .= tableFormation($_REQUEST, $name, $cost, $action, $products, $summa, $j-1, 0);
 echo  $textTable;
 
