@@ -1,12 +1,16 @@
-/**
- * Created by Михаил on 24.05.2016.
- */
-$(document).ready(forNewDom('main'));
+function ableOrDisableForm(classparam, idparam){
 
+    if ($('#'+idparam).prop("checked")) {
+        $('.' + classparam).removeAttr('disabled');
+    } else {
+        $('.' + classparam).attr('disabled', true);
+    }
+}
 
-
-function forNewDom(param)
+function forNewDom(param, targ, hr)
 {
+        $("a.menu").removeAttr(targ);
+        $("a.menu").removeAttr(hr);
         var id=param;
         url='url='+id+'.html';
         request = new AjaxRequest();
@@ -75,4 +79,8 @@ function AjaxRequest()
     }
     return request;
 }
+
+$(window).load(function () {
+    forNewDom('main','target', 'href');
+});
 

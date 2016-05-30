@@ -22,21 +22,14 @@
  * Date: 18.05.16
  * Time: 19:19
  */
-
-function formProcessing($massive, $i, $j, &$name, &$cost, &$action)
+function formProcessing(&$name, &$cost, &$action)
 {
-    if (isset($massive['check_' . $i])) {
-        $j++;
-        $name[$j] = $massive["name"][$i];
-        $cost[$j] = $massive["price"][$i];
-        $action[$j] = $massive["sale"][$i];
+    for ($i=0; $i<count($_REQUEST["name"]);$i++){
+                $name[$i] = $_REQUEST["name"][$i];
+                $cost[$i] = $_REQUEST["price"][$i];
+                $action[$i] = $_REQUEST["sale"][$i];
     }
-    if ($i == 0){
-        return $j;
-    }
-    else {
-        return formProcessing($massive, ($i-1), $j, $name, $cost, $action);
-    }
+    return count($_REQUEST["name"]);
 }
 
 function tableFormation($massive, $name, $cost, $action, $products, $summa, $j, $i)
@@ -133,12 +126,12 @@ $name = array ();
 $cost = array ();
 $action = array ();
 $j=0;
-
-$j = formProcessing($_REQUEST, count($_REQUEST) - 1, 0, $name, $cost, $action);
-array_multisort($cost, $name, $action);
-$textTable .= tableFormation($_REQUEST, $name, $cost, $action, $products, $summa, $j-1, 0);
+if ($_REQUEST){
+    $j = formProcessing($name, $cost, $action);
+    array_multisort($cost, $name, $action);
+    $textTable .= tableFormation($_REQUEST, $name, $cost, $action, $products, $summa, $j-1, 0);
+}
 echo  $textTable;
-
 ?>
     </tbody>
 </table>

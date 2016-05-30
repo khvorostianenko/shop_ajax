@@ -14,16 +14,6 @@ a{
     overflow: hidden;
 }
 
-/*iframe{
-    position: absolute;
-    top: -100px;
-    display: none;
-    margin: auto;
-    width: 100%;
-    height: 600px;
-    overflow: hidden;
-}*/
-
 main section {
     width: 100%;
 }
