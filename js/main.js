@@ -11,8 +11,7 @@ function forNewDom(param, targ, hr)
 {
         $("a.menu").removeAttr(targ);
         $("a.menu").removeAttr(hr);
-        var id=param;
-        url='url='+id+'.html';
+        url=param;
         request = new AjaxRequest();
         request.open("POST", "php/poster.php", true);
         request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -81,6 +80,6 @@ function AjaxRequest()
 }
 
 $(window).load(function () {
-    forNewDom('main','target', 'href');
+    forNewDom('url=main.html','target', 'href');
 });
 
