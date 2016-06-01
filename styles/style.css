@@ -71,3 +71,9 @@ a.menu{
     height: 40px;
     margin: 10px;
 }
+
+form#fos{
+    display: block;
+    width: 40%;
+    margin: auto;
+}

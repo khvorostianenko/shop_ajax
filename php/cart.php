@@ -22,17 +22,30 @@
  * Date: 18.05.16
  * Time: 19:19
  */
+//function formProcessing($array, $param, $i)
+//{
+//    if ($i == 0)
+//    {
+//        $array[$i] = $_REQUEST[$param][$i];
+//        return $array;
+//    }
+//    else
+//    {
+//        $array[$i] = $_REQUEST[$param][$i];
+//        return formProcessing($array, $param, $i-1);
+//    }
+//}
+
 function formProcessing($array, $param, $i)
 {
-    if ($i == 0)
+    if (isset($_REQUEST[$param][$i]))
     {
         $array[$i] = $_REQUEST[$param][$i];
-        return $array;
+        return formProcessing($array, $param, ++$i);
     }
     else
     {
-        $array[$i] = $_REQUEST[$param][$i];
-        return formProcessing($array, $param, $i-1);
+        return $array;
     }
 }
 
@@ -132,9 +145,9 @@ $action = array ();
 $j=0;
 if ($_REQUEST){
     $j = count($_REQUEST['name']);
-    $name = formProcessing($name, 'name', $j-1);
-    $cost = formProcessing($cost, 'price', $j-1);
-    $action = formProcessing($action, 'sale', $j-1);
+    $name = formProcessing($name, 'name', 0);
+    $cost = formProcessing($cost, 'price', 0);
+    $action = formProcessing($action, 'sale', 0);
     array_multisort($cost, $name, $action);
     $textTable .= tableFormation($_REQUEST, $name, $cost, $action, $products, $summa, $j-1, 0);
 }
