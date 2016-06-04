@@ -4,3 +4,7 @@
 #id=5;4;Michael;hh;17:32:46;<img src='../../data/images_for_comments/4/5/image0.gif'><img src='../../data/images_for_comments/4/5/image1.jpg'><img src='../../data/images_for_comments/4/5/image2.jpg'>
 #id=6;1;Jonas;hi;17:33:41;<img src='../../data/images_for_comments/1/6/image0.gif'>
 #id=7;3;;;17:42:44
+#id=8;2;Mike;leo;20:56:04;<img src='../../data/images_for_comments/2/8/image0.jpg'>
+#id=9;2;Mike;leo;21:16:57;<img src='../../data/images_for_comments/2/9/image0.jpg'>
+#id=10;2;Natan;for;21:21:23;<img src='../../data/images_for_comments/2/10/image0.png'>
+#id=11;3;Roman;hi;21:21:38;<img src='../../data/images_for_comments/3/11/image0.jpg'>

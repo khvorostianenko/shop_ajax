@@ -9,8 +9,8 @@
      <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
      <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
      <script src="../js/main.js"></script>
-     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-     <script src="bootstrap/js/bootstrap.min.js"></script>
+     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
+     <script src="../bootstrap/js/bootstrap.min.js"></script>
  </head>
  <body>
 
@@ -102,11 +102,12 @@
 
     <section id="otzivu" class="row">
         <div class="col-md-3">
-            <iframe class="framesForComments" src="php/otziv/showComment.php?idTovar=1" style="height: 300px; width: 99%"></iframe>
+            <noscript>
+                 <iframe class="framesForComments" src="../php/otziv/showComment.php?idTovar=1"></iframe>
+            </noscript>
+            <div class="divsForsResults"  id='resultForComment1'></div><br>
 
-            <div class="divsForsResults"  id='resultForComment1'></div><br><br>
-
-            <form method='post' enctype='multipart/form-data' id='formForComment1' action="php/otziv/addComment.php">
+            <form method='post' enctype='multipart/form-data' id='formForComment1' action="../php/otziv/addComment.php">
                     <input type='hidden' name='idTovar' value='1'><br>
                     Введите Ваше имя<br>
                     <input type='text' name='nameCustomer'><br>
@@ -120,11 +121,12 @@
 
         </div>
         <div class="col-md-3">
-            <iframe class="framesForComments" src="php/otziv/showComment.php?idTovar=2" style="height: 300px; width: 99%"></iframe>
-
+            <noscript>
+                <iframe class="framesForComments" src="../php/otziv/showComment.php?idTovar=2"></iframe>
+            </noscript>
             <div class="divsForsResults" id='resultForComment2'></div><br>
 
-            <form method='post' enctype='multipart/form-data' id='formForComment2' action="php/otziv/addComment.php">
+            <form method='post' enctype='multipart/form-data' id='formForComment2' action="../php/otziv/addComment.php">
                 <input type='hidden' name='idTovar' value='2'><br>
                 Введите Ваше имя<br>
                 <input type='text' name='nameCustomer'><br>
@@ -138,11 +140,12 @@
 
         </div>
         <div  class="col-md-3">
-            <iframe class="framesForComments" src="php/otziv/showComment.php?idTovar=3" style="height: 300px; width: 99%"></iframe>
-
+            <noscript>
+                <iframe class="framesForComments" src="../php/otziv/showComment.php?idTovar=3"></iframe>
+            </noscript>
             <div class="divsForsResults" id='resultForComment3'></div><br>
 
-            <form method='post' enctype='multipart/form-data' id='formForComment3' action="php/otziv/addComment.php">
+            <form method='post' enctype='multipart/form-data' id='formForComment3' action="../php/otziv/addComment.php">
                 <input type='hidden' name='idTovar' value='3'><br>
                 Введите Ваше имя<br>
                 <input type='text' name='nameCustomer'><br>
@@ -156,11 +159,12 @@
 
         </div>
         <div class="col-md-3">
-            <iframe class="framesForComments" src="php/otziv/showComment.php?idTovar=4" style="height: 300px; width: 99%"></iframe>
-
+            <noscript>
+                <iframe class="framesForComments" src="../php/otziv/showComment.php?idTovar=4"></iframe>
+            </noscript>
             <div class="divsForsResults"   id='resultForComment4'></div><br>
 
-            <form method='post' enctype='multipart/form-data' id='formForComment4' action="php/otziv/addComment.php">
+            <form method='post' enctype='multipart/form-data' id='formForComment4' action="../php/otziv/addComment.php">
                 <input type='hidden' name='idTovar' value='4'><br>
                 Введите Ваше имя<br>
                 <input type='text' name='nameCustomer'><br>
@@ -192,7 +196,7 @@
     <script>
         $("form#form_id").removeAttr('action');
         $("input#button").attr('type','button');
-        $('iframe.framesForComments').attr('hidden','true');
+
     </script>
    </p>
 </main>
@@ -203,6 +207,8 @@
  </body>
 </html>
 
+
+<!--$('iframe.framesForComments').attr('hidden','true');-->
 
 <!--<div id=''></div><br>-->
 <!--<form method='post' enctype='multipart/form-data' id='form-for-comment' action='php/otziv/addComment.php'>-->

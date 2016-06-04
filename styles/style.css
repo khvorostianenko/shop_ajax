@@ -1,3 +1,8 @@
+iframe.framesForComments{
+    height: 150px;
+    width: 99%;
+}
+
 div.divsForsResults{
     display: inline-block;
     overflow: hidden;
