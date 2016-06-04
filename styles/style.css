@@ -1,5 +1,43 @@
+div.divsForsResults{
+    display: inline-block;
+    overflow: hidden;
+    width: 99%;
+}
+
+#otzivu img{
+    display: inline-block;
+    width: auto;
+    text-align: left;
+}
+
+form#form-for-comment{
+    display: block;
+    width: 100%;
+}
+
+textarea#result_for_comment{
+    height: 200px;
+    width: 100%;
+}
+
 main{
     display: block;
+}
+
+main#main{
+    display: block;
+    margin: auto;
+    width: 90%;
+}
+
+nav{
+    margin: 10px;
+}
+
+nav+ul{
+    display: block;
+    margin: auto;
+    float: right;
 }
 
 a{
@@ -21,31 +59,32 @@ main section {
 main section div {
     float: left;
     width: 21%;
-    PADDING: 2%;
-    MARGIN: AUTO;
+    padding: 2%;
+    margin: AUTO;
 }
 
 main section div img {
-    DISPLAY: BLOCK;
+    display: BLOCK;
     width: 80%;
-    MARGIN: AUTO;
+    margin: AUTO;
 }
 
-nav{
-    display: inline;
-    text-align: center;
-}
 
-nav ul li {
-    border: 1px solid gray;
-    display: inline;
-    text-align: left;
-    font-size: 18;
-}
+/*nav{*/
+    /*display: inline;*/
+    /*text-align: center;*/
+/*}*/
 
-nav ul li:hover{
-    background: yellow;
-}
+/*nav ul li {*/
+    /*!*border: 1px solid gray;*!*/
+    /*display: inline;*/
+    /*text-align: left;*/
+    /*font-size: 18;*/
+/*}*/
+
+/*nav ul li:hover{*/
+    /*background: yellow;*/
+/*}*/
 
 footer ul li {
     text-align: center;
@@ -72,7 +111,7 @@ a.menu{
     margin: 10px;
 }
 
-form#fos{
+form#regform{
     display: block;
     width: 40%;
     margin: auto;

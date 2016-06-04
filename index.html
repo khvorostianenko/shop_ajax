@@ -8,19 +8,25 @@
      <meta charset="utf-8">
      <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
      <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+     <script src="bootstrap/js/bootstrap.min.js"></script>
+     <script src="http://malsup.github.com/jquery.form.js"></script>
+     <script src="js/validate_functions.js"></script>
      <script src="js/main.js"></script>
  </head>
  <body>
  <nav>
-     <ul>
-         <li><a class="menu" id='main' onClick="forNewDom('url='+this.id+'.html')" href="pages/main.html" target="myFrame">Каталог</a></li>
+    <div class="row">
+     <ul id="navb" class="nav navbar-nav col-sm-8 navbar-default" style="margin: auto; display: block; float: none">
+         <li class="active"><a class="menu" id='main' onClick="forNewDom('url='+this.id+'.html')" href="pages/main.html" target="myFrame">Каталог</a></li>
          <li><a class="menu" id='delivery' onClick="forNewDom('url='+this.id+'.html')" href="pages/delivery.html" target="myFrame">Оплата и доставка</a></li>
          <li><a class="menu" id='clients' onClick="forNewDom('url='+this.id+'.html')" href="pages/clients.html" target="myFrame">Клиентам</a></li>
-         <li><a class="menu" id='fos' onClick="forNewDom('url='+this.id+'.html')" href="pages/fos.html" target="myFrame">ФОС</a></li>
+         <li><a class="menu" id='registration' onClick="forNewDom('url='+this.id+'.html')" href="pages/registration.html" target="myFrame">Регистрация</a></li>
          <li><a class="menu" id='partners' onClick="forNewDom('url='+this.id+'.html')" href="pages/partners.html" target="myFrame">Партнерам</a></li>
          <li><a class="menu" id='about' onClick="forNewDom('url='+this.id+'.html')" href="pages/about.html" target="myFrame">О нас</a></li>
          <li><a class="menu" id='contacts' onClick="forNewDom('url='+this.id+'.html')" href="pages/contacts.html" target="myFrame">Контакты</a></li>
      </ul>
+    </div>
  </nav>
 
  <noscript>
@@ -32,6 +38,7 @@
 
 
    <footer>
+       <br>
        <ul>
            <li>Условия использования</li>
            <li>Конфиденциальность</li>

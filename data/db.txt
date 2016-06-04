@@ -1,0 +1,6 @@
+#id=2;1;Mike;for first;17:31:59;<img src='../../data/images_for_comments/1/2/image0.jpg'><img src='../../data/images_for_comments/1/2/image1.jpg'><img src='../../data/images_for_comments/1/2/image2.jpg'>
+#id=3;2;Nick;second;17:32:18;<img src='../../data/images_for_comments/2/3/image0.png'>
+#id=4;3;Alfred;frrr;17:32:29;<img src='../../data/images_for_comments/3/4/image0.jpg'>
+#id=5;4;Michael;hh;17:32:46;<img src='../../data/images_for_comments/4/5/image0.gif'><img src='../../data/images_for_comments/4/5/image1.jpg'><img src='../../data/images_for_comments/4/5/image2.jpg'>
+#id=6;1;Jonas;hi;17:33:41;<img src='../../data/images_for_comments/1/6/image0.gif'>
+#id=7;3;;;17:42:44

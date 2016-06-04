@@ -10,9 +10,7 @@
         text-align: right;
     }
 </style>
-<div>
-    Я вас категорически приветствую!
-</div>
+
 <table>
 
 <?php
@@ -22,20 +20,6 @@
  * Date: 18.05.16
  * Time: 19:19
  */
-//function formProcessing($array, $param, $i)
-//{
-//    if ($i == 0)
-//    {
-//        $array[$i] = $_REQUEST[$param][$i];
-//        return $array;
-//    }
-//    else
-//    {
-//        $array[$i] = $_REQUEST[$param][$i];
-//        return formProcessing($array, $param, $i-1);
-//    }
-//}
-
 function formProcessing($array, $param, $i)
 {
     if (isset($_REQUEST[$param][$i]))
@@ -113,6 +97,7 @@ function tableFormation($massive, $name, $cost, $action, $products, $summa, $j, 
 
 $i = 0;
 
+
 do
 {
     $textAvailable = 'товар ' . ($products[$i]['available'] ? 'готово к отгрузке' : 'ждем поставки');
@@ -151,7 +136,13 @@ if ($_REQUEST){
     array_multisort($cost, $name, $action);
     $textTable .= tableFormation($_REQUEST, $name, $cost, $action, $products, $summa, $j-1, 0);
 }
+
+echo "<div class='col-md-offset-3'>";
+echo '<br>';
 echo  $textTable;
+echo '</br>';
+echo "</div>";
+
 ?>
     </tbody>
 </table>
