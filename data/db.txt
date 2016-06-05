@@ -8,3 +8,4 @@
 #id=9;2;Mike;leo;21:16:57;<img src='../../data/images_for_comments/2/9/image0.jpg'>
 #id=10;2;Natan;for;21:21:23;<img src='../../data/images_for_comments/2/10/image0.png'>
 #id=11;3;Roman;hi;21:21:38;<img src='../../data/images_for_comments/3/11/image0.jpg'>
+#id=12;1;F;ffft;15:29:14

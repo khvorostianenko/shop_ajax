@@ -56,7 +56,7 @@ function validate_email($field)
 
 function fix_string($string)
 {
-    if (get_magic_quotes_gpc()) $string = stripslashes($string);
+    //if (get_magic_quotes_gpc()) $string = stripslashes($string);
     return htmlentities ($string);
 }
 
@@ -74,9 +74,27 @@ if (isset($_POST['age']))
 if (isset($_POST['email']))
     $email = fix_string($_POST['email']);
 
-$fail = validate_forename($forename);
+$fail='';
+$fail .= validate_forename($forename);
 $fail .= validate_surname($surname);
 $fail .= validate_username($username);
 $fail .= validate_password($password);
 $fail .= validate_age($age);
 $fail .= validate_email($email);
+
+$formForname ='value="'.$_POST['forename'].'">';
+$formSurname ='value="'.$_POST['surname'].'">';
+$formUsername ='value="'.$_POST['username'].'">';
+$formPassword ='value="'.$_POST['password'].'">';
+$formAge ='value="'.$_POST['age'].'">';
+$formEmail ='value="'.$_POST['email'].'">';
+
+if ($fail == "")
+{
+    $message = "Вы успешно зарегистрировались";
+    echo $message;
+} else {
+    $fail = '<b>Вашей форме найдены ошибки: <br>'.$fail.'</b>';
+    echo $fail;
+//    include_once("../pages/registration.html");
+}

@@ -8,6 +8,7 @@
 
      <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
      <script src="https://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+     <script src="../js/validate_functions.js"></script>
      <script src="../js/main.js"></script>
      <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
      <script src="../bootstrap/js/bootstrap.min.js"></script>
@@ -40,11 +41,11 @@
                        </p>
 
                          <label>Наименование: Машинка</label>
-                             <input class="tov1"  id="name[]" type="text" name="name[]" disabled hidden value="Машинка"/><br>
+                             <input class="tov1"  type="text" name="name[]" disabled hidden value="Машинка"/><br>
                              <label>Цена: 2200</label>
-                             <input class="tov1" id="price_1" type="text" name="price[]" disabled hidden value="2200"/><br>
+                             <input class="tov1" type="text" name="price[]" disabled hidden value="2200"/><br>
                              <label>Скидка: 10%</label>
-                             <input class="tov1"  id="sale_1" type="text" name="sale[]"  disabled hidden  value="10"/><br>
+                             <input class="tov1" type="text" name="sale[]"  disabled hidden  value="10"/><br>
                                 <label>Берем?</label>
                              <input id="check_1"  type="checkbox" name="check[]" onclick="ableOrDisableForm('tov1', 'check_1')"/><br>
                    </div>
@@ -91,7 +92,7 @@
                            <input id="check_4" type="checkbox" name="check[]" onclick="ableOrDisableForm('tov4', 'check_4')"/><br>
 
                    </div>
-               <input class="col-md-6 col-md-offset-3  btn btn-success" id="button" type="submit"
+               <input class="col-md-6 col-md-offset-3 btn btn-success" id="button" type="submit"
                       value="ДОБАВИТЬ ВЫБРАННЫЕ ПРОДУКТЫ В КОРЗИНУ"
                       onclick="AjaxFormRequest('result_for_cart', 'form_id', 'php/cart.php')" />
            </form>
@@ -178,19 +179,22 @@
 
         </div>
     </section>
-    <!--<div id='resultForComment'></div><br>-->
-    <!--<form method='post' enctype='multipart/form-data' id='formForComment' action='php/otziv/addComment.php'>-->
-        <!--<input type='hidden' name='idTovar' value='1'><br>-->
-        <!--Введите Ваше имя<br>-->
-        <!--<input type='text' name='nameCustomer'><br>-->
-        <!--Текст отзыва впишите ниже<br>-->
-        <!--<textarea name='comment' ></textarea><br>-->
-        <!--<input type='file' multiple name='filename[]' accept="image/*"><br>-->
-        <!--<input id="button" type="submit" class="btn btn-success"-->
-               <!--value="Добавить комментарий"-->
-                <!--onclick="AjaxFormRequest('resultForComment','formForComment','php/otziv/addComment.php?Fl=1')" >-->
 
-
+    <div id="forRegRes"></div>
+    <div class="form-group">
+        <form method="post" id="regForm" name="regform" onSubmit="return validate(this)">
+            <label>Регистрационная форма</label><br>
+            <label><?=$fail ?></label><br>
+            <input type="text" class="form-control" name="forename" placeholder="Ваше имя" <?=$formForname ?><br>
+            <input type="text" class="form-control" name="surname" placeholder="Ваша фамилия" <?=$formSurname ?><br>
+            <input type="text" class="form-control" name="username" placeholder="Придумайте логин" <?=$formUsername ?><br>
+            <input type="password" class="form-control" name="password" placeholder="Придумайте пароль" <?=$formPassword ?><br>
+            <input type="text" class="form-control" name="age" maxlength="3" placeholder="Укажите возраст" <?=$formAge ?><br>
+            <input type="email" class="form-control" name="email" placeholder="Укажите email" <?=$formEmail ?><br>
+            <input type="submit" id="button"   class="btn btn-success" value="Зарегистрироваться"
+                   onclick="AjaxFormRequest('forRegRes','regForm','php/adduser.php')"><br>
+        </form>
+    </div>
 
     </form>
     <script>

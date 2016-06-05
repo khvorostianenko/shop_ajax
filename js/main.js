@@ -38,7 +38,7 @@ function forNewDom(param, targ, hr)
 {
         $("a.menu").removeAttr(targ);
         $("a.menu").removeAttr(hr);
-        url=param;
+        url='url='+param.replace("pages/","");
         request = new AjaxRequest();
         request.open("POST", "php/poster.php", true);
         request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -86,7 +86,7 @@ function AjaxFormRequest(resultid,formid,url){
 }
 
 $(window).load(function () {
-    forNewDom('url=main.html','target', 'href');
+    forNewDom('pages/main.html','target', 'href');
     AjaxFormRequest('resultForComment1', 'formForComment1', 'php/otziv/addComment.php?idTovar=1&Fl=1');
     AjaxFormRequest('resultForComment2', 'formForComment2', 'php/otziv/addComment.php?idTovar=2&Fl=1');
     AjaxFormRequest('resultForComment3', 'formForComment3', 'php/otziv/addComment.php?idTovar=3&Fl=1');

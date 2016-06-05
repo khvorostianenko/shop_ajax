@@ -20,6 +20,15 @@
  * Date: 18.05.16
  * Time: 19:19
  */
+//function formProcessing()
+//{
+//        foreach ($_REQUEST as $key=>$value)
+//            {
+//                $$key = array($value);
+//                print_r($$key);
+//            }
+//}
+
 function formProcessing($array, $param, $i)
 {
     if (isset($_REQUEST[$param][$i]))
@@ -126,15 +135,31 @@ while( $i < count($products));
 
 $name = array ();
 $cost = array ();
-$action = array ();
+$sale = array ();
 $j=0;
+//foreach ($_REQUEST as $key=>$value){
+//    var_dump($key);
+//    echo '<br>';
+//    var_dump($value);
+//    echo '<br>';
+//}
+//echo '<br>';
+//echo '<br>';
+
+//if ($_REQUEST){
+//    $j = count($_REQUEST['name']);
+//    formProcessing();
+//    array_multisort($cost, $name, $sale);
+//    $textTable .= tableFormation($_REQUEST, $name, $cost, $sale, $products, $summa, $j-1, 0);
+//}
+
 if ($_REQUEST){
     $j = count($_REQUEST['name']);
     $name = formProcessing($name, 'name', 0);
     $cost = formProcessing($cost, 'price', 0);
-    $action = formProcessing($action, 'sale', 0);
-    array_multisort($cost, $name, $action);
-    $textTable .= tableFormation($_REQUEST, $name, $cost, $action, $products, $summa, $j-1, 0);
+    $sale = formProcessing($sale, 'sale', 0);
+    array_multisort($cost, $name, $sale);
+    $textTable .= tableFormation($_REQUEST, $name, $cost, $sale, $products, $summa, $j-1, 0);
 }
 
 echo "<div class='col-md-offset-3'>";
