@@ -12,6 +12,7 @@ function ReadAntimat( $filename ) {
 }
 
 function countOtziv(){
+    $counter = 0;
     if(file_exists('../../data/counter.txt')){
         $counter = file_get_contents('../../data/counter.txt');
         $counter++;
@@ -27,7 +28,7 @@ function countOtziv(){
     return $counter;
 }
 
-function pathForImage($counter){
+function pathForImageAndComment($counter){
     $baza = "../../data/images_for_comments/".$_REQUEST['idTovar']."/";
     if(!file_exists($baza)) mkdir($baza);
     $baza .= $counter."/";
@@ -50,23 +51,21 @@ function images($counter)
             }
             if ($ext)
             {
-                //$put = "../../data/images_for_comments/";
-                $put = pathForImage($counter);
-                $n = $put."image".$i.".".$ext;
-                move_uploaded_file($_FILES['filename']['tmp_name'][$i], $n);
-                $photos .= "<img src='{$n}'>";
+                $put = pathForImageAndComment($counter);
+                $full_path_for_image = $put."image".$i.".".$ext;
+                move_uploaded_file($_FILES['filename']['tmp_name'][$i], $full_path_for_image);
+                $photos .= "<img src='{$full_path_for_image}'>";
             }
         }
         return ($photos)?(';'.$photos):($photos);
 }
 
-
-
-// echo '<pre>';
-//var_dump($_REQUEST);
-// var_dump($_FILES);
- //var_dump($_FILES['filename']['name'][5]);
-// echo '</pre>';
+function comments($counter, $lowerStr){
+        $put = pathForImageAndComment($counter);
+        $full_path_for_comment = $put."comment.txt";
+        file_put_contents($full_path_for_comment, $lowerStr);
+        return ";".$full_path_for_comment;
+}
 
  $antimat = ReadAntimat(ANTIMAT);
  $replaces= ReadAntimat(FILE_REPLACES);
@@ -74,16 +73,16 @@ function images($counter)
 if (isset($_POST['idTovar']))
 {
      $counter = countOtziv();
-     $lowerStr = mb_strtolower( $_REQUEST['comment'] );
-     if(isset($_FILES['filename']['name'])) $n = images($counter);
+     $lowerStr = mb_strtolower( $_REQUEST['comment'], 'UTF-8');
+     $path_to_comment = comments($counter, $lowerStr);
+     if(isset($_FILES['filename']['name'])) $path_to_image = images($counter);
      $lowerStr  =  str_replace( $antimat, $replaces, $lowerStr );
-     $toWrite = '#id='.$counter.';'.$_REQUEST['idTovar'] . ';' . $_REQUEST['nameCustomer'] . ';' . $lowerStr . ';' .date('H:i:s').$n.PHP_EOL;
+     //[0] = счетчик; [1] = Номер товара; [2] = имя покупателя; [3] = время; [4] = путь к комментарию; [5] = ссылка на картинки
+     $toWrite = $counter. ';' .$_REQUEST['idTovar'] . ';' . $_REQUEST['nameCustomer'] . ';' .
+                date('H:i:s') . $path_to_comment. $path_to_image . PHP_EOL;
      fwrite($handle, $toWrite);
      fclose($handle);
 }
 
-// $handle = fopen( FILENAME, 'r');
-// $text = fread($handle, 1000000 );
-// echo $text;
  include_once 'showComment.php';
 ?>

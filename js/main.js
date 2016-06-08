@@ -53,6 +53,7 @@ function forNewDom(param, targ, hr)
                     if (this.responseText != null)
                     {
                         $('#for-new-dom').html(this.responseText);
+                        showCommets();
                     }
                     else alert("Ошибка AJAX: Данные не получены");
                 }
@@ -85,12 +86,16 @@ function AjaxFormRequest(resultid,formid,url){
         xhr.send(formData);
 }
 
+function showCommets(){
+    AjaxFormRequest('resultForComment1', 'formForComment1', 'php/otziv/showComment.php?idTovar=1&Fl=1');
+    AjaxFormRequest('resultForComment2', 'formForComment2', 'php/otziv/showComment.php?idTovar=2&Fl=1');
+    AjaxFormRequest('resultForComment3', 'formForComment3', 'php/otziv/showComment.php?idTovar=3&Fl=1');
+    AjaxFormRequest('resultForComment4', 'formForComment4', 'php/otziv/showComment.php?idTovar=4&Fl=1');
+}
+
 $(window).load(function () {
     forNewDom('pages/main.html','target', 'href');
-    AjaxFormRequest('resultForComment1', 'formForComment1', 'php/otziv/addComment.php?idTovar=1&Fl=1');
-    AjaxFormRequest('resultForComment2', 'formForComment2', 'php/otziv/addComment.php?idTovar=2&Fl=1');
-    AjaxFormRequest('resultForComment3', 'formForComment3', 'php/otziv/addComment.php?idTovar=3&Fl=1');
-    AjaxFormRequest('resultForComment4', 'formForComment4', 'php/otziv/addComment.php?idTovar=4&Fl=1');
+    showCommets();
 });
 
 

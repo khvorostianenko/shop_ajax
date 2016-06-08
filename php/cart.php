@@ -20,26 +20,31 @@
  * Date: 18.05.16
  * Time: 19:19
  */
-//function formProcessing()
+//Не рабочая
+//function formProcessing($arr)
 //{
-//        foreach ($_REQUEST as $key=>$value)
-//            {
-//                $$key = array($value);
-//                print_r($$key);
-//            }
+//    if (!isset($massive))
+//    {
+//        global $massive;
+//        $massive = array();
+//        var_dump($massive);
+//    }
+//    var_dump($massive);
+//    $i = count($massive);
+//    echo $i;
+//    print_r($arr[$i]);
+//    if (!isset($arr[$i]))
+//        return $massive;
+//    $massive[$i] = $arr[$i];
+//    return formProcessing($arr);
 //}
 
 function formProcessing($array, $param, $i)
 {
-    if (isset($_REQUEST[$param][$i]))
-    {
-        $array[$i] = $_REQUEST[$param][$i];
-        return formProcessing($array, $param, ++$i);
-    }
-    else
-    {
+    if (!isset($_REQUEST[$param][$i]))
         return $array;
-    }
+    $array[$i] = $_REQUEST[$param][$i];
+    return formProcessing($array, $param, ++$i);
 }
 
 function tableFormation($massive, $name, $cost, $action, $products, $summa, $j, $i)
@@ -143,15 +148,11 @@ $j=0;
 //    var_dump($value);
 //    echo '<br>';
 //}
-//echo '<br>';
-//echo '<br>';
 
-//if ($_REQUEST){
-//    $j = count($_REQUEST['name']);
-//    formProcessing();
-//    array_multisort($cost, $name, $sale);
-//    $textTable .= tableFormation($_REQUEST, $name, $cost, $sale, $products, $summa, $j-1, 0);
-//}
+//var_dump($_REQUEST[1]);
+//
+//echo '<br>';
+//echo '<br>';
 
 if ($_REQUEST){
     $j = count($_REQUEST['name']);
@@ -161,6 +162,17 @@ if ($_REQUEST){
     array_multisort($cost, $name, $sale);
     $textTable .= tableFormation($_REQUEST, $name, $cost, $sale, $products, $summa, $j-1, 0);
 }
+
+
+//      Рабочая часть
+//if ($_REQUEST){
+//    $j = count($_REQUEST['name']);
+//    $name = formProcessing($name, 'name', 0);
+//    $cost = formProcessing($cost, 'price', 0);
+//    $sale = formProcessing($sale, 'sale', 0);
+//    array_multisort($cost, $name, $sale);
+//    $textTable .= tableFormation($_REQUEST, $name, $cost, $sale, $products, $summa, $j-1, 0);
+//}
 
 echo "<div class='col-md-offset-3'>";
 echo '<br>';

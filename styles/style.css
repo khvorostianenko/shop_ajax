@@ -116,7 +116,7 @@ a.menu{
     margin: 10px;
 }
 
-form#regForm{
+form#regForm, form#fos{
     display: block;
     width: 40%;
     margin: auto;
