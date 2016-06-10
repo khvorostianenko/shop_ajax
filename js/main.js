@@ -86,21 +86,17 @@ function AjaxFormRequest(resultid,formid,url){
         xhr.send(formData);
 }
 
-function showCommets(){
+function showCommetsAndCart(){
     AjaxFormRequest('resultForComment1', 'formForComment1', 'php/otziv/showComment.php?idTovar=1&Fl=1');
     AjaxFormRequest('resultForComment2', 'formForComment2', 'php/otziv/showComment.php?idTovar=2&Fl=1');
     AjaxFormRequest('resultForComment3', 'formForComment3', 'php/otziv/showComment.php?idTovar=3&Fl=1');
     AjaxFormRequest('resultForComment4', 'formForComment4', 'php/otziv/showComment.php?idTovar=4&Fl=1');
-}
-
-function showCart(){
     AjaxFormRequest('result_for_cart', 'form_id', 'php/cart.php');
 }
 
 $(window).load(function () {
     forNewDom('pages/main.html','target', 'href');
-    showCommets();
-    showCart();
+    showCommetsAndCart();
 });
 
 
