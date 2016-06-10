@@ -93,9 +93,14 @@ function showCommets(){
     AjaxFormRequest('resultForComment4', 'formForComment4', 'php/otziv/showComment.php?idTovar=4&Fl=1');
 }
 
+function showCart(){
+    AjaxFormRequest('result_for_cart', 'form_id', 'php/cart.php');
+}
+
 $(window).load(function () {
     forNewDom('pages/main.html','target', 'href');
     showCommets();
+    showCart();
 });
 
 

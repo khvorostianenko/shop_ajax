@@ -1,4 +1,1 @@
-../../data/images_for_comments/1/41/image0.gif
-../../data/images_for_comments/1/41/image2.jpg
-../../data/images_for_comments/2/37/image0.jpg
-../../data/images_for_comments/3/38/image0.jpg
+../../data/images_for_comments/4/39/image0.jpg

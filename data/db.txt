@@ -4,3 +4,4 @@
 39;4;Alibab;21:57:05;../../data/images_for_comments/4/39/comment.txt;<img src='../../data/images_for_comments/4/39/image0.jpg'>
 40;1;;22:17:25;../../data/images_for_comments/1/40/comment.txt
 41;1;Miha;22:17:41;../../data/images_for_comments/1/41/comment.txt;<img src='../../data/images_for_comments/1/41/image0.gif'><img src='../../data/images_for_comments/1/41/image1.jpg'><img src='../../data/images_for_comments/1/41/image2.jpg'>
+42;4;Miha;13:10:58;../../data/images_for_comments/4/42/comment.txt;<img src='../../data/images_for_comments/4/42/image0.jpg'>
