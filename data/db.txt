@@ -5,3 +5,5 @@
 40;1;;22:17:25;../../data/images_for_comments/1/40/comment.txt
 41;1;Miha;22:17:41;../../data/images_for_comments/1/41/comment.txt;<img src='../../data/images_for_comments/1/41/image0.gif'><img src='../../data/images_for_comments/1/41/image1.jpg'><img src='../../data/images_for_comments/1/41/image2.jpg'>
 42;4;Miha;13:10:58;../../data/images_for_comments/4/42/comment.txt;<img src='../../data/images_for_comments/4/42/image0.jpg'>
+43;2;Michael;12:38:09;../../data/images_for_comments/2/43/comment.txt;<img src='../../data/images_for_comments/2/43/image0.jpg'>
+44;2;Michael;12:38:15;../../data/images_for_comments/2/44/comment.txt;<img src='../../data/images_for_comments/2/44/image0.jpg'>

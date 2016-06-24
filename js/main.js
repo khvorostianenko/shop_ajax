@@ -36,55 +36,40 @@ function ableOrDisableForm(classparam, idparam){
 
 function forNewDom(param, targ, hr)
 {
-        $("a.menu").removeAttr(targ);
-        $("a.menu").removeAttr(hr);
-        url='url='+param.replace("pages/","");
-        request = new AjaxRequest();
-        request.open("POST", "php/poster.php", true);
-        request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        request.setRequestHeader("Content-length", url.length);
-        request.setRequestHeader("Connection", "close");
-        request.onreadystatechange = function()
+        $("a.menu")
+            .removeAttr(targ)
+            .removeAttr(hr);
+        ajaxUrl=param.replace("pages/","");
+        $.post("php/poster.php", {url: ajaxUrl}, function (data)
         {
-            if (this.readyState == 4)
-            {
-                if (this.status == 200)
-                {
-                    if (this.responseText != null)
-                    {
-                        $('#for-new-dom').html(this.responseText);
-                        showCommets();
-                    }
-                    else alert("Ошибка AJAX: Данные не получены");
-                }
-                else alert( "Ошибка AJAX: " + this.statusText);
-            }
-        };
-        $('footer').css('display', 'none');
-        request.send(url);
-        $('footer').css('display', 'block');
+            $('#for-new-dom').html(data)
+        } );
+        $('footer')
+            .css('display', 'none')
+            .css('display', 'block');
 }
 
 function AjaxFormRequest(resultid,formid,url){
-        var form = document.forms[formid];
-        //var form = $('#'+formid).;
-        var formData = new FormData(form);
-        var xhr = new AjaxRequest();
-        xhr.open("POST", url);
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState == 4) {
-                if(xhr.status == 200) {
-                    data = xhr.responseText;
-                    if(data != null) {
-                        $('#'+resultid).html(data);
-                    } else {
-                        $('#'+resultid).html("Ошибка при отправке формы");
-                    }
+    var form = document.forms[formid];
+    //var form = $('#'+formid).;
+    var formData = new FormData(form);
+    var xhr = new AjaxRequest();
+    xhr.open("POST", url);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState == 4) {
+            if(xhr.status == 200) {
+                data = xhr.responseText;
+                if(data != null) {
+                    $('#'+resultid).html(data);
+                } else {
+                    $('#'+resultid).html("Ошибка при отправке формы");
                 }
             }
-        };
-        xhr.send(formData);
+        }
+    };
+    xhr.send(formData);
 }
+
 
 function showCommetsAndCart(){
     AjaxFormRequest('resultForComment1', 'formForComment1', 'php/otziv/showComment.php?idTovar=1&Fl=1');
@@ -99,28 +84,58 @@ $(window).load(function () {
     showCommetsAndCart();
 });
 
+// function forNewDom(param, targ, hr)
+// {
+//     $("a.menu").removeAttr(targ);
+//     $("a.menu").removeAttr(hr);
+//     url='url='+param.replace("pages/","");
+//     request = new AjaxRequest();
+//     request.open("POST", "php/poster.php", true);
+//     request.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+//     request.setRequestHeader("Content-length", url.length);
+//     request.setRequestHeader("Connection", "close");
+//     request.onreadystatechange = function()
+//     {
+//         if (this.readyState == 4)
+//         {
+//             if (this.status == 200)
+//             {
+//                 if (this.responseText != null)
+//                 {
+//                     $('#for-new-dom').html(this.responseText);
+//                     showCommets();
+//                 }
+//                 else alert("Ошибка AJAX: Данные не получены");
+//             }
+//             else alert( "Ошибка AJAX: " + this.statusText);
+//         }
+//     };
+//     $('footer').css('display', 'none');
+//     request.send(url);
+//     $('footer').css('display', 'block');
+// }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// Старая функция (до 13/06/16) для оптарвики формы с файлами
+// function AjaxFormRequest(resultid,formid,url){
+//     var form = document.forms[formid];
+//     //var form = $('#'+formid).;
+//     var formData = new FormData(form);
+//     var xhr = new AjaxRequest();
+//     xhr.open("POST", url);
+//     xhr.onreadystatechange = function() {
+//         if (xhr.readyState == 4) {
+//             if(xhr.status == 200) {
+//                 data = xhr.responseText;
+//                 if(data != null) {
+//                     $('#'+resultid).html(data);
+//                 } else {
+//                     $('#'+resultid).html("Ошибка при отправке формы");
+//                 }
+//             }
+//         }
+//     };
+//     xhr.send(formData);
+// }
 
 //Старая функция (до 04/06/16) для отправки формы (не отправляет файлы)
 // function AjaxFormRequest(result_id,form_id,url) {

@@ -20,6 +20,22 @@ function formProcessing($requestTek,$array, $i)
     return formProcessing($requestTek, $array, ++$i);
 }
 
+function dataPreparation($paramArray){
+    $name = array ();
+    $cost = array ();
+    $sale = array ();
+    $j=0;
+    $products = 0;
+    $summa = 0;
+    $j = count($paramArray['name']);
+    $name = formProcessing($paramArray['name'],$name, 0);
+    $cost = formProcessing($paramArray['price'],$cost, 0);
+    $sale = formProcessing($paramArray['sale'],$sale, 0);
+    array_multisort($cost, $name, $sale);
+    $textTableLocal = tableFormation($paramArray, $name, $cost, $sale, $products, $summa, $j-1, 0);
+    return $textTableLocal;
+}
+
 function tableFormation($massive, $name, $cost, $action, $products, $summa, $j, $i)
 {
     if (!isset($action[0])){
@@ -41,21 +57,7 @@ function tableFormation($massive, $name, $cost, $action, $products, $summa, $j, 
     }
 }
 
-function dataPreparation($paramArray){
-    $name = array ();
-    $cost = array ();
-    $sale = array ();
-    $j=0;
-    $products = 0;
-    $summa = 0;
-    $j = count($paramArray['name']);
-    $name = formProcessing($paramArray['name'],$name, 0);
-    $cost = formProcessing($paramArray['price'],$cost, 0);
-    $sale = formProcessing($paramArray['sale'],$sale, 0);
-    array_multisort($cost, $name, $sale);
-    $textTableLocal = tableFormation($paramArray, $name, $cost, $sale, $products, $summa, $j-1, 0);
-    return $textTableLocal;
-}
+
 
     const COL_LINE = '</td><td>';
     const BEGIN_ROW = '<tr><td>';
@@ -102,7 +104,7 @@ function dataPreparation($paramArray){
     }
 
 
-
+    var_dump($_COOKIE);
     echo "<div class='col-md-offset-3'>";
     echo '<br>';
     if (isset($textTable))
