@@ -104,9 +104,9 @@ function tableFormation($massive, $name, $cost, $action, $products, $summa, $j, 
     }
 
 
-    var_dump($_COOKIE);
+    //var_dump($_COOKIE);
     echo "<div class='col-md-offset-3'>";
-    echo '<br>';
+//    echo '<br>';
     if (isset($textTable))
     {
         echo TABLE_HEAD.$textTable;

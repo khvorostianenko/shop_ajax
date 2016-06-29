@@ -9,11 +9,11 @@
     if(!$db_server){
         die ("Невозможно подключиться к mySQL: ".mysql_error());
     } else {
-        echo 'Вы успешно подключились к серверу<br>';
+        //echo 'Вы успешно подключились к серверу<br>';
     }
 
     mysql_select_db($db_database) or die('Невозможно выбрать базу данных '.$db_database.' из-за ошибки '.mysql_error());
-    echo 'Вы подключились к базе '.$db_database.'<br>';
+    //echo 'Вы подключились к базе '.$db_database.'<br>';
 
     mysql_query("SET NAMES 'utf8'");
     mysql_query("SET CHARACTER SET 'utf8'");
@@ -40,7 +40,7 @@ function showCategory($parent = 0){
         if(isChildren($new_parent)){
             $text.= '<ul>'.showCategory($new_parent).'</ul>';
         } else {
-            $queryTovar = 'SELECT name FROM tovaru WHERE categoriesKey='.$new_parent;
+            $queryTovar = 'SELECT name FROM tovaru WHERE categoriesKey='.$new_parent.' ORDER BY showMethod';
             $resultTovar = mysql_query($queryTovar);
             $text.= '<ul>';
             while($rowTovar = mysql_fetch_row($resultTovar)){
@@ -52,5 +52,19 @@ function showCategory($parent = 0){
     return $text.'</ul>';
 }
 echo '<br><br>';
-echo (showCategory());
+//echo (showCategory()); //Выводит все дерево с товарами
+
+$queryTovar = 'SELECT name FROM tovaru ORDER BY categoriesKey, showMethod';
+$resultTovar = mysql_query($queryTovar);
+echo "<section class='row' style='text-align: center;'>";
+while($rowTovar = mysql_fetch_row($resultTovar)){
+    echo
+    <<<_END
+            <div class="col-sm-3">
+                   $rowTovar[0]
+            </div>
+_END;
+}
+echo '</section>';
+
 mysql_close($db_server);

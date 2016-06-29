@@ -26,7 +26,6 @@ function AjaxRequest()
 }
 
 function ableOrDisableForm(classparam, idparam){
-
     if ($('#'+idparam).prop("checked")) {
         $('.' + classparam).removeAttr('disabled');
     } else {
@@ -49,6 +48,7 @@ function forNewDom(param, targ, hr)
             .css('display', 'block');
 }
 
+// Старая функция (до 13/06/16) для оптарвики формы с файлами
 function AjaxFormRequest(resultid,formid,url){
     var form = document.forms[formid];
     //var form = $('#'+formid).;
@@ -70,6 +70,28 @@ function AjaxFormRequest(resultid,formid,url){
     xhr.send(formData);
 }
 
+// Что-то в процессе
+// function AjaxFormRequest(resultid,formid,url){
+//     var form = document.forms[formid];
+//     //var form = $('#'+formid).;
+//     var formData = new FormData(form);
+//     var xhr = new AjaxRequest();
+//     xhr.open("POST", url);
+//     xhr.onreadystatechange = function() {
+//         if (xhr.readyState == 4) {
+//             if(xhr.status == 200) {
+//                 data = xhr.responseText;
+//                 if(data != null) {
+//                     $('#'+resultid).html(data);
+//                 } else {
+//                     $('#'+resultid).html("Ошибка при отправке формы");
+//                 }
+//             }
+//         }
+//     };
+//     xhr.send(formData);
+// }
+
 
 function showCommetsAndCart(){
     AjaxFormRequest('resultForComment1', 'formForComment1', 'php/otziv/showComment.php?idTovar=1&Fl=1');
@@ -80,7 +102,7 @@ function showCommetsAndCart(){
 }
 
 $(window).load(function () {
-    forNewDom('pages/main.html','target', 'href');
+    forNewDom('pages/main.php','target', 'href');
     showCommetsAndCart();
 });
 
@@ -115,27 +137,7 @@ $(window).load(function () {
 //     $('footer').css('display', 'block');
 // }
 
-// Старая функция (до 13/06/16) для оптарвики формы с файлами
-// function AjaxFormRequest(resultid,formid,url){
-//     var form = document.forms[formid];
-//     //var form = $('#'+formid).;
-//     var formData = new FormData(form);
-//     var xhr = new AjaxRequest();
-//     xhr.open("POST", url);
-//     xhr.onreadystatechange = function() {
-//         if (xhr.readyState == 4) {
-//             if(xhr.status == 200) {
-//                 data = xhr.responseText;
-//                 if(data != null) {
-//                     $('#'+resultid).html(data);
-//                 } else {
-//                     $('#'+resultid).html("Ошибка при отправке формы");
-//                 }
-//             }
-//         }
-//     };
-//     xhr.send(formData);
-// }
+
 
 //Старая функция (до 04/06/16) для отправки формы (не отправляет файлы)
 // function AjaxFormRequest(result_id,form_id,url) {

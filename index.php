@@ -20,7 +20,7 @@
     <div class="row">
      <ul id="navb" class="nav navbar-nav col-sm-8 navbar-default" style="margin: auto; display: block; float: none">
          <li class="active">
-             <a class="menu" id='main' href="pages/main.html" onClick="forNewDom('pages/main.html')"  target="myFrame">Каталог</a></li>
+             <a class="menu" id='main' href="pages/main.php" onClick="forNewDom('pages/main.php')" target="myFrame">Каталог</a></li>
          <li><a class="menu" id='delivery' onClick="forNewDom('pages/delivery.html')" href="pages/delivery.html" target="myFrame">Оплата и доставка</a></li>
          <li><a class="menu" id='clients' onClick="forNewDom('pages/clients.html')" href="pages/clients.html" target="myFrame">Клиентам</a></li>
          <li><a class="menu" id='registration' onClick="forNewDom('pages/registration.html')" href="pages/registration.html" target="myFrame">Регистрация</a></li>
@@ -30,9 +30,11 @@
      </ul>
     </div>
  </nav>
-
+<?php
+    include_once 'pages/mysql.php';
+?>
  <noscript>
-     <iframe name="myFrame" src="pages/main.html" align="top" width=100% height=1100px frameborder="2"></iframe>
+     <iframe name="myFrame" src="pages/main.php" align="top" width=100% height=1100px frameborder="2"></iframe>
  </noscript>
 
  <div id="forReg"></div>
