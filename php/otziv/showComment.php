@@ -31,13 +31,7 @@
         if($i!=$count)
         {
             $parts = explode(';', $row);// explode — Разбивает строку $row с помощью разделителя ;
-//            echo 'До обаботки трушкой';
-//            echo $parts[5];
             $photoPosleTrue= isset($parts[5])? returnTrueImages($parts[5]): false ;
-//            echo "<br><br><br><br><br><br><br><br>";
-//            echo 'После обаботки трушкой';
-//            echo $photoPosleTrue;
-//            echo 'До вывода отзыва';
             $photoPosleTrue = isset($photoPosleTrue)?($photoPosleTrue.'<br>'):'';
             $comments = $parts[4];
             if(isset($_GET['Fl'])){
@@ -51,4 +45,15 @@
         else
             break;
     }
+
+    require_once '../../data/config_mysql.php';
+    $query = "SELECT * FROM comments JOIN images ON comments.id_comment=images.id_comment WHERE id_tovar='{$_REQUEST['idTovar']}'";
+    $resultT = mysql_query($query);
+    while($rowTovar = mysql_fetch_assoc($resultT)){
+        $photoMySql = htmlspecialchars_decode($rowTovar['img_path'],ENT_QUOTES);
+        $photoMySql = str_replace("../../","",$photoMySql);
+        echo "mysql_id=".$rowTovar['id_comment'].' '.$rowTovar['time']. '<br> Пользователь ' . $rowTovar['customer_name'] .
+            ' написал: <br>' . $rowTovar['comment'] . '<br>'.$photoMySql.'<br><br>';
+    }
+
 ?>

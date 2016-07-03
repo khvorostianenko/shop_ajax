@@ -16,5 +16,11 @@ function fileToArray( $filename ) {
     $rows = explode( PHP_EOL, $text );
     return $rows;
 }
+
+// Вариант Руслана
+//function GetDBParams() {
+//    return fileToArray( 'db_config.sys' );
+//}
+
 ?>
 

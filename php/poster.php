@@ -5,12 +5,13 @@
         preg_match('/<p.*p>/', $page_str, $match);
         print_r($match[0]);
                               }
+
     function SanitizeString($var)
-        {
-          $var = strip_tags($var);
-          $var = htmlentities($var);
-          return stripslashes($var);
-        }
+    {
+        $var = strip_tags($var);
+        $var = htmlentities($var);
+        return stripslashes($var);
+    }
 
 /*
  * Created by PhpStorm.

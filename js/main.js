@@ -48,7 +48,7 @@ function forNewDom(param, targ, hr)
             .css('display', 'block');
 }
 
-// Старая функция (до 13/06/16) для оптарвики формы с файлами
+// Старая но рабочая на 100% функция (до 13/06/16) для оптарвики формы с файлами
 function AjaxFormRequest(resultid,formid,url){
     var form = document.forms[formid];
     //var form = $('#'+formid).;
@@ -69,6 +69,19 @@ function AjaxFormRequest(resultid,formid,url){
     };
     xhr.send(formData);
 }
+
+function showCommetsAndCart(){
+    AjaxFormRequest('resultForComment1', 'formForComment1', 'php/otziv/showComment.php?idTovar=1&Fl=1');
+    AjaxFormRequest('resultForComment2', 'formForComment2', 'php/otziv/showComment.php?idTovar=2&Fl=1');
+    AjaxFormRequest('resultForComment3', 'formForComment3', 'php/otziv/showComment.php?idTovar=3&Fl=1');
+    AjaxFormRequest('resultForComment4', 'formForComment4', 'php/otziv/showComment.php?idTovar=4&Fl=1');
+    AjaxFormRequest('result_for_cart', 'form_id', 'php/cart.php');
+}
+
+$(window).load(function () {
+    forNewDom('pages/main.php','target', 'href');
+    showCommetsAndCart();
+});
 
 // Что-то в процессе
 // function AjaxFormRequest(resultid,formid,url){
@@ -91,20 +104,6 @@ function AjaxFormRequest(resultid,formid,url){
 //     };
 //     xhr.send(formData);
 // }
-
-
-function showCommetsAndCart(){
-    AjaxFormRequest('resultForComment1', 'formForComment1', 'php/otziv/showComment.php?idTovar=1&Fl=1');
-    AjaxFormRequest('resultForComment2', 'formForComment2', 'php/otziv/showComment.php?idTovar=2&Fl=1');
-    AjaxFormRequest('resultForComment3', 'formForComment3', 'php/otziv/showComment.php?idTovar=3&Fl=1');
-    AjaxFormRequest('resultForComment4', 'formForComment4', 'php/otziv/showComment.php?idTovar=4&Fl=1');
-    AjaxFormRequest('result_for_cart', 'form_id', 'php/cart.php');
-}
-
-$(window).load(function () {
-    forNewDom('pages/main.php','target', 'href');
-    showCommetsAndCart();
-});
 
 // function forNewDom(param, targ, hr)
 // {

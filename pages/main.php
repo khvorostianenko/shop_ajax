@@ -18,6 +18,7 @@
 
 <main id="main">
    <p id="main" >
+
     <section class="row">
         <div class="col-sm-3">
                <img src="http://royaltoys.in.ua/royal_storage/goods/db9142c545ffa17aa34dddf963bb4977.jpeg" />
@@ -100,7 +101,6 @@
         <div class="row">
             <div class="col-md-6 col-md-offset-3" id="result_for_cart"></div>
         </div>
-
     <section id="otzivu" class="row">
         <div class="col-md-3">
             <noscript>
